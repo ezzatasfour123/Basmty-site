@@ -57,9 +57,89 @@ background:rgba(0,0,0,0.95);justify-content:center;align-items:center;z-index:99
 #fullscreenViewer img{max-width:90%;max-height:90%;border-radius:20px}
 
 /* Music */
-#musicCard{background:rgba(255,255,255,0.12);padding:35px;border-radius:30px;backdrop-filter:blur(15px);box-shadow:0 20px 60px rgba(0,0,0,0.5);max-width:500px;margin:30px auto;transition:0.4s}
-#playBtn{padding:12px 35px;border:none;border-radius:40px;background:linear-gradient(45deg,#ff4e91,#ff758c);color:white;font-size:16px;font-weight:bold;cursor:pointer}
-#progress{width:100%;margin-top:20px}
+#musicCard{
+    background:rgba(0,0,0,0.4);
+    padding:40px;
+    border-radius:30px;
+    max-width:420px;
+    margin:50px auto;
+    backdrop-filter:blur(20px);
+    box-shadow:0 20px 60px rgba(0,0,0,0.6);
+    text-align:center;
+}
+
+.music-player{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.disc{
+    width:200px;
+    height:200px;
+    border-radius:50%;
+    overflow:hidden;
+    margin-bottom:25px;
+    box-shadow:0 0 30px #ff4e91;
+    transition:0.4s;
+}
+
+.disc img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+}
+
+.spin{
+    animation:rotate 6s linear infinite;
+}
+
+@keyframes rotate{
+    from{transform:rotate(0deg);}
+    to{transform:rotate(360deg);}
+}
+
+#playBtn{
+    padding:12px 35px;
+    border:none;
+    border-radius:40px;
+    background:linear-gradient(45deg,#ff4e91,#ff758c);
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-bottom:15px;
+}
+
+#progress{
+    width:100%;
+    accent-color:#ff4e91;
+}
+.disc{
+    width:180px;
+    height:180px;
+    margin:20px auto;
+    border-radius:50%;
+    overflow:hidden;
+    box-shadow:0 0 25px rgba(255,78,145,0.6);
+}
+
+.disc img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+}
+
+.spin{
+    animation:rotate 4s linear infinite;
+}
+
+@keyframes rotate{
+    from{transform:rotate(0deg);}
+    to{transform:rotate(360deg);}
+}
 </style></head>
 <body><div id="loginScreen" style="
 position:fixed;
@@ -141,10 +221,20 @@ cursor:pointer;
 </div>
 </div><div id="musicCard">
 <h2>أغنيتنا 🎵</h2>
-<button id="playBtn">تشغيل الأغنية ▶</button>
-<input type="range" id="progress" value="0">
+
+<div class="music-player">
+
+  <div class="disc">
+    <img src="songcover.jpg" id="albumArt">
+  </div>
+
+  <button id="playBtn">تشغيل الأغنية ▶</button>
+  <input type="range" id="progress" value="0">
+
+</div>
+
 <audio id="loveSong">
-<source src="song.mp3" type="audio/mpeg">
+  <source src="song.mp3" type="audio/mpeg">
 </audio>
 </div></div><div id="fullscreenViewer"><img id="fullImg"></div><script>
 
@@ -183,8 +273,15 @@ const song=document.getElementById("loveSong");
 const btn=document.getElementById("playBtn");
 const progress=document.getElementById("progress");
 btn.onclick=function(){
-if(song.paused){song.play();btn.innerText="إيقاف الأغنية ⏸";document.getElementById("musicCard").style.boxShadow="0 0 40px #ff4e91"}
-else{song.pause();btn.innerText="تشغيل الأغنية ▶";document.getElementById("musicCard").style.boxShadow="0 20px 60px rgba(0,0,0,0.5)"}
+if(song.paused){
+    song.play();
+    btn.innerText="إيقاف الأغنية ⏸";
+    document.getElementById("albumArt").classList.add("spin");
+}else{
+    song.pause();
+    btn.innerText="تشغيل الأغنية ▶";
+    document.getElementById("albumArt").classList.remove("spin");
+}
 };
 song.addEventListener("timeupdate",()=>{progress.max=song.duration;progress.value=song.currentTime});
 progress.addEventListener("input",()=>{song.currentTime=progress.value});
