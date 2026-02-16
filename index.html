@@ -74,6 +74,28 @@ background:rgba(0,0,0,0.95);justify-content:center;align-items:center;z-index:99
 <img src="photo2.jpg">
 <img src="photo3.jpg">
 </div>
+<!-- First Meet Photo -->
+<div style="margin:60px 0; text-align:center;">
+  <div style="
+    background:rgba(255,255,255,0.15);
+    padding:20px;
+    border-radius:25px;
+    display:inline-block;
+    backdrop-filter:blur(10px);
+    box-shadow:0 15px 40px rgba(0,0,0,0.4);
+  ">
+    <img src="photolove.jpg" alt="First Meet"
+      style="
+        width:220px;
+        height:220px;
+        object-fit:cover;
+        border-radius:20px;
+        display:block;
+        margin-bottom:15px;
+      ">
+    <h3 style="margin:0;font-size:20px;">أول مره نتقابل 14/2 ❤️</h3>
+  </div>
+</div>
 </div><div id="musicCard">
 <h2>أغنيتنا 🎵</h2>
 <button id="playBtn">تشغيل الأغنية ▶</button>
@@ -112,7 +134,7 @@ document.getElementById("fullscreenViewer").style.display="flex";
 }
 });
 document.getElementById("fullscreenViewer").onclick=function(){this.style.display="none"};
-  
+
 // الموسيقى
 const song=document.getElementById("loveSong");
 const btn=document.getElementById("playBtn");
