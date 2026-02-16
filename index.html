@@ -280,6 +280,13 @@ modal.addEventListener('click', () => {
 });
 
 });
-
+function checkPassword(){
+  const pass = document.getElementById("passwordInput").value;
+  if(pass === "411"){
+    document.getElementById("loginScreen").style.display="none";
+  }else{
+    document.getElementById("errorMsg").innerText="الباسورد غلط 😢";
+  }
+}
 </script></body>
 </html>
