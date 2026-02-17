@@ -192,32 +192,55 @@ cursor:pointer;
 <div class="time-box"><h2 id="seconds">0</h2><p>Seconds</p></div>
 </div><div class="cards" id="cards"></div><div class="gallery">
 <h2>صورنا 📸</h2>
-<div class="gallery-grid" id="galleryGrid">
-<img src="photo1.jpg">
-<img src="photo2.jpg">
-<img src="photo3.jpg">
+<div class="gallery-grid" id="galleryGrid" style="
+display:flex;
+overflow-x:auto;
+flex-wrap:nowrap;
+gap:20px;
+scroll-snap-type:x mandatory;
+padding:10px;
+">
+
+<img src="photo1.jpg" style="min-width:180px;height:250px;object-fit:cover;border-radius:15px;scroll-snap-align:center;">
+
+<img src="photo2.jpg" style="min-width:180px;height:250px;object-fit:cover;border-radius:15px;scroll-snap-align:center;">
+
+<img src="photo3.jpg" style="min-width:180px;height:250px;object-fit:cover;border-radius:15px;scroll-snap-align:center;">
+
 </div>
-<!-- First Meet Photo -->
-<div style="margin:60px 0; text-align:center;">
+</div>
+<!-- Love Memory Slider -->
+<div style="margin:60px 0;">
   <div style="
-    background:rgba(255,255,255,0.15);
-    padding:20px;
-    border-radius:25px;
-    display:inline-block;
-    backdrop-filter:blur(10px);
-    box-shadow:0 15px 40px rgba(0,0,0,0.4);
+    display:flex;
+    overflow-x:auto;
+    gap:20px;
+    justify-content:center;
+    scroll-snap-type:x mandatory;
+    padding:10px;
   ">
-    <img src="photolove.jpg" alt="First Meet"
-      style="
-        width:220px;
-        height:220px;
-        object-fit:cover;
-        border-radius:20px;
-        display:block;
-        margin-bottom:15px;
-      ">
-    <h3 style="margin:0;font-size:20px;">أول مره نتقابل 16/2 ❤️</h3>
-  </div>
+    
+    <div style="
+      min-width:240px;
+      scroll-snap-align:center;
+      background:rgba(255,255,255,0.15);
+      border-radius:25px;
+      padding:15px;
+      backdrop-filter:blur(10px);
+      box-shadow:0 15px 40px rgba(0,0,0,0.4);
+    ">
+      <img src="photolove.jpg"
+        style="
+          width:100%;
+          height:220px;
+          object-fit:cover;
+          border-radius:20px;
+        ">
+      <div style="margin-top:12px;font-weight:bold;">
+        أول مره نتقابل 16/2 ❤️
+      </div>
+    </div>
+</div>
 </div>
 </div><div id="musicCard">
 <h2>أغنيتنا 🎵</h2>
